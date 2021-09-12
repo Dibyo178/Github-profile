@@ -6,8 +6,8 @@ import "./SearchBar.scss";
 const SearchBar = ({ data }) => {
   const [filterData, setFilterData] = useState([]);
 
-  console.log(filterData)
-  
+  console.log(filterData);
+
   const handleChange = (e) => {
     const searchWord = e.target.value;
     const newFilter = data.filter((value) => {
@@ -20,8 +20,6 @@ const SearchBar = ({ data }) => {
       setFilterData(newFilter);
     }
   };
-
-
 
   // const showItem = id=> {
   //   const url=`/explore/${id}`;
@@ -49,41 +47,26 @@ const SearchBar = ({ data }) => {
             onChange={handleChange}
           />
         </div>
-        
+
         {filterData.length > 0 && (
           <div className="dataResult">
-          
-            {filterData.map((value, key,index) => {
-
-              const { login,id } = value;
+            {filterData.map((value, key) => {
+              const { login, id } = value;
               return (
                 // <Link to='/nav'className="dataItem" href={value.html_url}>
                 //   <p>{value.login}</p>
                 // </Link>
-                 
 
-              
-                  <div className="dataItem" > 
+                <div className="dataItem">
                   <Link to={`/user/${id}`}>
-                  <p >{login}</p>
+                    <p>{login}</p>
                   </Link>
-                  </div>
-              
+                </div>
               );
             })}
-            
           </div>
         )}
       </div>
-      
-      
-      
-        
-        
-    
-      
-
-      
     </div>
   );
 };
